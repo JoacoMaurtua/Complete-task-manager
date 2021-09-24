@@ -37,9 +37,20 @@ const updateTask = (req,res) =>{
         res.sendStatus(500);
       })
 
+};
+
+
+const deleteTask =(req,res) =>{
+    Task.deleteOne({_id:req.params.id})
+    .then(results => res.json({data:results}))
+      .catch(error=>{
+        res.json({error:error, message:'Could not create a task'})
+        res.sendStatus(500);
+      })
 }
 
 
 
 
-module.exports = {findTasks, findSingleProduct, createTask, updateTask}
+
+module.exports = {findTasks, findSingleProduct, createTask, updateTask, deleteTask}
