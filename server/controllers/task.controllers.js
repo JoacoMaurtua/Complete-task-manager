@@ -20,4 +20,16 @@ const findSingleProduct = (req,res) =>{
 
 }
 
-module.exports = {findTasks, findSingleProduct}
+const createTask = (req,res) =>{
+  Task.create(req.body)
+      .then(results => res.json({data:results}))
+      .catch(error=>{
+        res.json({error:error, message:'Task not found'})
+        res.sendStatus(500);
+      })
+}
+
+
+
+
+module.exports = {findTasks, findSingleProduct, createTask}
