@@ -1,0 +1,31 @@
+###GET TASKS
+
+GET http://localhost:8000/api/tasks
+
+###GET A SINGLE TASK
+
+GET http://localhost:8000/api/tasks/614d3fa9154c06c7b2b12a97
+
+###POST TASK
+POST http://localhost:8000/api/tasks/create
+Content-Type: application/json
+
+{
+  "title" : "Read a good book",
+  "date" : "2021-09-22"
+}
+
+###PUT TASK
+
+PUT http://localhost:8000/api/tasks/update/614d3fa9154c06c7b2b12a97
+Content-Type: application/json
+
+{
+  "title" : "Write a complete fullstack app",
+  "date": "2021-09-22T00:00:00.000Z",
+  "description": "Do my last coding dojo asigment"
+}
+
+
+###DELETE TASKS
+DELETE http://localhost:8000/api/tasks/delete/614d3fc7154c06c7b2b12a99

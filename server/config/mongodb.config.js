@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
-require('dotenv').config();
 
-const dataBase = 'mongodb://localhost/task-manager';
+const dataBase = process.env.DB;
 
 const connectDB = async() =>{
   try{

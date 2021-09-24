@@ -15,6 +15,9 @@ app.use(express.json());
 app.use(express.urlencoded({extended:true}))
 
 
+//RUTA PARA TAREAS:
+app.use('/api',require('./routes/task.routes'));
+
 
 
 

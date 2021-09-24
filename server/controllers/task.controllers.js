@@ -21,6 +21,7 @@ const findSingleProduct = (req,res) =>{
 };
 
 const createTask = (req,res) =>{
+  console.log(req.body)
   Task.create(req.body)
       .then(results => res.json({data:results}))
       .catch(error=>{
@@ -33,7 +34,7 @@ const updateTask = (req,res) =>{
     Task.findOneAndUpdate({_id:req.params.id}, req.body, {new:true})
     .then(results => res.json({data:results}))
       .catch(error=>{
-        res.json({error:error, message:'Could not create a task'})
+        res.json({error:error, message:'Could not update a task'})
         res.sendStatus(500);
       })
 
@@ -44,13 +45,10 @@ const deleteTask =(req,res) =>{
     Task.deleteOne({_id:req.params.id})
     .then(results => res.json({data:results}))
       .catch(error=>{
-        res.json({error:error, message:'Could not create a task'})
-        res.sendStatus(500);
+        res.json({error:error, message:'Could not delete a task'})
+        res.sendStatus(202);
       })
 }
 
 
-
-
-
-module.exports = {findTasks, findSingleProduct, createTask, updateTask, deleteTask}
+module.exports = {findTasks, findSingleProduct, createTask, updateTask, deleteTask};
