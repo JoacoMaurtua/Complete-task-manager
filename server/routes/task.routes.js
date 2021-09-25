@@ -2,7 +2,7 @@ const express = require('express');
 
 const router = express();
 
-const {findTasks, findSingleProduct, createTask, updateTask, deleteTask} = require('../controllers/task.controllers');
+const {findTasks, findSingleTask, createTask, updateTask, deleteTask} = require('../controllers/task.controllers');
 
 //Rutas:
 
@@ -10,7 +10,7 @@ const {findTasks, findSingleProduct, createTask, updateTask, deleteTask} = requi
 router.get('/tasks', findTasks);
 
 //encontrar una tarea
-router.get('/tasks/:id',findSingleProduct);
+router.get('/tasks/:id',findSingleTask);
 
 //crear una tarea
 router.post('/tasks/create',createTask);

@@ -10,7 +10,7 @@ const findTasks = (req,res) =>{
 };
 
 
-const findSingleProduct = (req,res) =>{
+const findSingleTask = (req,res) =>{
     Task.findOne({_id:req.params.id})
         .then(results => res.json({data:results}))
         .catch(error=>{
@@ -51,4 +51,4 @@ const deleteTask =(req,res) =>{
 }
 
 
-module.exports = {findTasks, findSingleProduct, createTask, updateTask, deleteTask};
+module.exports = {findTasks, findSingleTask, createTask, updateTask, deleteTask};
