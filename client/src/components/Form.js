@@ -21,10 +21,19 @@ export default function Form({create,update}) {
         />
 
         <label htmlFor='date'>Date: </label>
-        <DateTimePicker 
+        <DateTimePicker className="datePicker"
+          style={{marginBottom:'3rem', color:'white'}} 
           value={dateSelected}
           onChange={setDateSelected}
         />
+
+        <label htmlFor='texttarea'>Descripcion: </label>
+        <textarea
+            id="textarea"
+            cols='30' rows='7.5'
+        ></textarea>
+
+        <button type="submit">Crear tarea</button>
 
       </form>
       

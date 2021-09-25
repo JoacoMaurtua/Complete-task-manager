@@ -16,3 +16,53 @@
   align-items: center;
 }
 
+.formContainer{
+  background-color: #6930c3;
+  color: white;
+  width: 25%;
+  min-width:450px;
+  height: 600px;
+  padding: 30px;
+  box-sizing: border-box;
+  border-radius: 6px;
+  box-shadow: 0 15px 30px rgba(4, 40, 49, 0.4);
+
+}
+
+form{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+label{
+  margin-bottom: .5rem;
+}
+
+input, textarea{
+  margin-bottom: 3rem;
+}
+
+.datePicker input{
+  color:white;
+}
+
+button{
+  min-width: 100px;
+  background-color: #48bfe3;
+  color: white;
+  border:none;
+  font-family:'Montserrat', sans-serif;
+  font-size: 14px;
+  border-radius: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  outline: none;
+  cursor: pointer;
+  padding: .5rem 1rem;
+}
+
+button:hover{
+  background-color: #5390d9;
+}
