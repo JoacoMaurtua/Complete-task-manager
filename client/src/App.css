@@ -20,38 +20,59 @@
   background-color: #6930c3;
   color: white;
   width: 25%;
-  min-width:450px;
-  height: 600px;
-  padding: 30px;
+  min-width:28.125rem;
+  height: 37.5rem;
+  padding: 1.875rem;
   box-sizing: border-box;
-  border-radius: 6px;
+  border-radius: .375rem;
   box-shadow: 0 15px 30px rgba(4, 40, 49, 0.4);
-
 }
+
+.formContainer h2{
+  font-weight: 600;
+  font-size: 30px;
+}
+
 
 form{
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-bottom: 10px;
+  margin-bottom: 0.625rem;
 }
+
 
 label{
   margin-bottom: .5rem;
+  font-size: 18px;
+  font-weight: 600;
 }
 
 input, textarea{
-  margin-bottom: 3rem;
+  background-color: #5e60ce;
+  color: #fff;
+  margin-bottom: 2.5rem;
+  width: 18.75rem;
+  min-width: 15.625rem;
+  padding: 15px 10px 10px 20px;
+  font-family: 'Josefin Sans',serif;
+  font-size: 0.938rem;
+  outline: none;
+  border: none;
+  border-radius: 20px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  transform: translateY(3px);
 }
+
 
 .datePicker input{
   color:white;
 }
 
-button{
-  min-width: 100px;
-  background-color: #48bfe3;
+ .taskButton{
+  min-width: 6.25rem;
+  background-color: #5390d9; 
   color: white;
   border:none;
   font-family:'Montserrat', sans-serif;
@@ -61,8 +82,10 @@ button{
   outline: none;
   cursor: pointer;
   padding: .5rem 1rem;
-}
+} 
 
-button:hover{
-  background-color: #5390d9;
+ 
+.taskButton:hover{
+  background-color: #48bfe3;
+  
 }

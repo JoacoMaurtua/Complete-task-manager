@@ -16,6 +16,7 @@ export default function Form({create,update}) {
       <form>
         <label htmlFor="title"Title>Title: </label>
         <input
+         
           id="title"
           type="text"        
         />
@@ -29,11 +30,12 @@ export default function Form({create,update}) {
 
         <label htmlFor='texttarea'>Descripcion: </label>
         <textarea
+        
             id="textarea"
             cols='30' rows='7.5'
         ></textarea>
 
-        <button type="submit">Crear tarea</button>
+        <button className = "taskButton" type="submit">Crear tarea</button>
 
       </form>
       
