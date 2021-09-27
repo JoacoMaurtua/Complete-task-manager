@@ -10,6 +10,7 @@ export default function Form({create,update}) {
 
   const [taskInput, setTaskInput] = useState({
     title:'',
+    date:dateSelected,
     description:''
   });
 
@@ -21,6 +22,24 @@ export default function Form({create,update}) {
     })
   };
 
+  //Funcion para crear una tarea en la base de datos:
+  const addTasks =()=>{
+    axios.post('api/tasks/create',taskInput)
+        .then(res=>{
+          if(res.data.data){
+            console.log(res.data.data)
+          }else{
+            alert(res.data.error.message)
+          }
+        })
+        .catch(err => console.log(err))
+  }
+
+  const handleOnSubmit =e=>{
+    e.preventDefault();
+    addTasks();
+  }
+
   const {title,description} = taskInput;
 
   return (
@@ -28,7 +47,7 @@ export default function Form({create,update}) {
       {
         create?<h2>Create a new Task</h2>:update?<h2>Update this task</h2>:''
       }
-      <form>
+      <form onSubmit={handleOnSubmit}>
         <label htmlFor="title"Title>Title: </label>
         <input
           name="title"
