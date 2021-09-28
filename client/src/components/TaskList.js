@@ -3,14 +3,17 @@ import {useHistory,Link,useParams} from 'react-router-dom';
 import axios from 'axios';
 
 function TaskList({list}) {
-  //const history = useHistory();
+  const history = useHistory();
 
-/*   const taskForm = e =>{
+  const taskForm = e =>{
     history.push('/')
-  }; */
+  }; 
 
   return (
     <div className="taskList-container">
+      <button className="btn back" onClick={e => taskForm(e)}>
+          <i class="fas fa-arrow-circle-left"></i>
+      </button>
       <h2>My tasks to do</h2>
       {
         list.map((task,index)=>(
