@@ -3,16 +3,7 @@ import {Link} from 'react-router-dom';
 import { useParams } from 'react-router';
 import axios from 'axios'; 
 
-export default function Task({task,setTaskList}) {
-  const {id} = useParams();
-
-  const deleteTask = id =>{
-    axios.delete(`/api/tasks/delete/${id}`)
-          .then(res=>{
-            const newTasksList = task.filter((actualTasks) => actualTasks._id !== id);
-            setTaskList(newTasksList);
-          })
-  }
+export default function Task({task,functionD}) {
 
   return (
     <li className="list-item">
@@ -29,7 +20,7 @@ export default function Task({task,setTaskList}) {
         </Link>
          
 
-          <button className="btn-delete task-btn" onClick={e => deleteTask(task._id)}>
+          <button className="btn-delete task-btn" onClick={e => functionD(task._id)}>
             <i className="fas fa-trash-alt"></i>
           </button>
           

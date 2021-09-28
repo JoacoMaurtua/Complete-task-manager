@@ -1,14 +1,24 @@
 import React from 'react';
-import {useHistory} from 'react-router-dom';
+import {useHistory,useParams} from 'react-router-dom';
 import Task from './Task';
+import axios from 'axios';
 
 
 function TaskList({list,setList}) {
   const history = useHistory();
+  const {id} = useParams();
   
   const taskForm = e =>{
     history.push('/')
   }; 
+
+  const deleteTask = id =>{
+    axios.delete(`/api/tasks/delete/${id}`)
+          .then(res=>{
+            const newTasksList = list.filter((actualTasks) => actualTasks._id !== id);
+            setList(newTasksList);
+          })
+  }
 
   return (
     <div className="taskList-container">
@@ -19,7 +29,7 @@ function TaskList({list,setList}) {
       <ul className="list">
         {
           list.map((task,index)=>(
-            <Task key={index} task={task} setTaskList={setList}/>
+            <Task key={index} task={task} functionD={deleteTask}/>
           ))
         }
       </ul>
