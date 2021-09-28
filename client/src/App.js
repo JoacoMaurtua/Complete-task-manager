@@ -28,7 +28,7 @@ function App() {
           </Route>
           <Route exact path={`/tasks`}>
             {
-              loaded? <TaskList list={tasks}/>:''
+              loaded? <TaskList list={tasks} setList={setTasks}/>:''
             }
           </Route>
           <Route exact path={`/tasks/:id`}>

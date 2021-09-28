@@ -3,9 +3,9 @@ import {useHistory} from 'react-router-dom';
 import Task from './Task';
 
 
-function TaskList({list}) {
+function TaskList({list,setList}) {
   const history = useHistory();
-
+  
   const taskForm = e =>{
     history.push('/')
   }; 
@@ -19,7 +19,7 @@ function TaskList({list}) {
       <ul className="list">
         {
           list.map((task,index)=>(
-            <Task key={index} task={task}/>
+            <Task key={index} task={task} setTaskList={setList}/>
           ))
         }
       </ul>
