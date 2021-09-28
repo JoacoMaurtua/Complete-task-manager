@@ -7,6 +7,9 @@
   font-family: 'Josefin Slab', serif;
 }
 
+
+/*FORM BEGIN*/
+
 .container{
   background: linear-gradient(100deg, #72efdd 50%,#80ffdb 0);
   width: 100%;
@@ -102,3 +105,32 @@ p:hover{
   font-size: 18px;
   color: #80ffdb;
 }
+
+/*FORM END*/
+
+
+/******************************************************************************/
+
+
+/*TASK LIST BEGIN*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*TASK LIST END*/

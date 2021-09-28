@@ -37,7 +37,9 @@ export default function Form({create,update}) {
 
   const handleOnSubmit =e=>{
     e.preventDefault();
-    addTasks();
+    addTasks()
+    
+ 
   }
 
   const {title,description} = taskInput;
@@ -76,7 +78,7 @@ export default function Form({create,update}) {
 
         <button className = "taskButton" type="submit">Crear tarea</button>
 
-        <Link>
+        <Link style={{textDecoration:'none'}}>
           <p>Ver todas las tareas</p>
         </Link>
         
