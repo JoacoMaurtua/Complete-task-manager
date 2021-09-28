@@ -128,8 +128,6 @@ input, textarea{
   {background-color: #5e60ce;}
   
 
-
-
 .list-item{
   display: flex;
   justify-content: space-between;
@@ -158,7 +156,15 @@ input, textarea{
   outline: none;
 }
 
-.btn-edit, .btn-delete{color: white;}
+.btn-edit, .btn-delete{
+  color: white;
+  
+}
+
+.btn-edit:hover{
+  color: #80ffdb;
+  font-size: 1.2rem;
+}
 
 
 /*TASK LIST END*/

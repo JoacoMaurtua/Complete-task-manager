@@ -12,9 +12,12 @@ export default function Task({task}) {
      
       <div className="list-item--buttons">
         
+        <Link to = {`/tasks/${task._id}/edit`}>
           <button className="btn-edit task-btn">
             <i className="fas fa-pen"></i>
           </button>
+        </Link>
+         
 
           <button className="btn-delete task-btn">
             <i className="fas fa-trash-alt"></i>

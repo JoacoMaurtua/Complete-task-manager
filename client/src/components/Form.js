@@ -95,13 +95,13 @@ export default function Form({create,update}) {
         ></textarea>
 
         {
-          create?<button className = "taskButton" type="submit">Crear tarea</button>:
-          update?<button className = "taskButton" type="submit">Editar tarea</button>:
+          create?<button className = "taskButton" type="submit">Create task</button>:
+          update?<button className = "taskButton" type="submit">Edit task</button>:
           ''
         }
 
         <Link to={'/tasks'} style={{textDecoration:'none'}}>
-          <p className="tasksLink">Ver todas las tareas</p>
+          <p className="tasksLink">See all my tasks</p>
         </Link>
         
 
