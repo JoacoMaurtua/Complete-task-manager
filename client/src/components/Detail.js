@@ -9,7 +9,7 @@ export default function Detail() {
   const history = useHistory();
 
   useEffect(()=>{
-    axios.get(`/api/tasks/${IdleDeadline}`)
+    axios.get(`/api/tasks/${id}`)
          .then(res => setSingleTask(res.data.data))
   },[id]);
 
@@ -23,9 +23,9 @@ export default function Detail() {
           <i class="fas fa-arrow-circle-left"></i>
       </button>
       <h2>Task Detail</h2>
-      <p>Title: {singleTask.title}</p>
-      <p>Date: {singleTask.date}</p>
-      <p>Description: {singleTask.description}</p>
+      <p><span>Title:</span> {singleTask.title}</p>
+      <p><span>Date:</span> {singleTask.date}</p>
+      <p><span>Description:</span> {singleTask.description}</p>
     </div>
   )
 }

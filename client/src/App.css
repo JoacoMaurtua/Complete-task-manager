@@ -19,7 +19,7 @@
   align-items: center;
 }
 
-.formContainer, .taskList-container{
+.formContainer, .taskList-container, .detail-container{
   background-color: #6930c3;
   color: white;
   width: 25%;
@@ -34,6 +34,7 @@
 h2 {
   font-weight: 600;
   font-size: 30px;
+  margin: 2.313rem;
 
 }
 
@@ -123,11 +124,11 @@ input, textarea{
 .btn-back:hover{color: #80ffdb;}
   
 
-.taskList-container{background-color: #5e60ce;}
+.taskList-container, .detail-container
+  {background-color: #5e60ce;}
   
 
-.taskList-container h2{ margin: 2.313rem;}
- 
+
 
 .list-item{
   display: flex;
@@ -165,18 +166,11 @@ input, textarea{
 /***************************************************************/
 
 /*TASK DETAIL BEGIN*/
-
-
-
-
-
-
-
-
-
-
-
-
-
+.detail-container p{
+  font-size: 20px;
+}
+.detail-container span{
+  font-weight: bold;
+}
 
 /*TASK DETAIL END*/

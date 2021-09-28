@@ -26,13 +26,16 @@ function App() {
           <Route exact path={`/`}>
               <Form create={true}/>
           </Route>
-          <Route path={`/tasks`}>
+          <Route exact path={`/tasks`}>
             {
               loaded? <TaskList list={tasks}/>:''
             }
           </Route>
-          <Route path={`/tasks/:id`}>
+          <Route exact path={`/tasks/:id`}>
             <Detail />
+          </Route>
+          <Route exact path={`/tasks/:id/edit`}>
+              <Form update={true}/>
           </Route>
         </Switch>
       </Router>

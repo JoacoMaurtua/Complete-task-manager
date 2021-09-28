@@ -1,12 +1,14 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import {DateTimePicker} from '@material-ui/pickers';
-import {Link} from 'react-router-dom';
+import {Link, useParams} from 'react-router-dom';
 
 export default function Form({create,update}) {
 
   const [dateSelected, setDateSelected] = useState(new Date());
   console.log(dateSelected);
+
+  const {id} = useParams();
 
   const [taskInput, setTaskInput] = useState({
     title:'',
@@ -35,11 +37,27 @@ export default function Form({create,update}) {
         .catch(err => console.log(err))
   }
 
+  //traer la ruta de la tarea con la que hara match la consulta
+  useEffect(()=>{
+    if(id){
+      axios.get(`/api/tasks/${id}`)
+          .then(res => setTaskInput(res.data.data))
+    }
+  },[id])
+
+  //funcion para actualizar una tarea:
+  const updateTask =()=>{
+    axios.put(`/api/tasks/update/${id}`,taskInput)
+        .then(res => console.log(res));
+  }
+
   const handleOnSubmit =e=>{
     e.preventDefault();
-    addTasks()
+
+    if(id) {updateTask()}
+      
+    else{addTasks()}
     
- 
   }
 
   const {title,description} = taskInput;
@@ -76,7 +94,11 @@ export default function Form({create,update}) {
             onChange={handleOnChange}   
         ></textarea>
 
-        <button className = "taskButton" type="submit">Crear tarea</button>
+        {
+          create?<button className = "taskButton" type="submit">Crear tarea</button>:
+          update?<button className = "taskButton" type="submit">Editar tarea</button>:
+          ''
+        }
 
         <Link to={'/tasks'} style={{textDecoration:'none'}}>
           <p className="tasksLink">Ver todas las tareas</p>
