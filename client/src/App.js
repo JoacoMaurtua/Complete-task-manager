@@ -4,6 +4,7 @@ import axios from 'axios';
 import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import Form from './components/Form';
 import TaskList from './components/TaskList';
+import Detail from './components/Detail';
 
 function App() {
 
@@ -25,10 +26,13 @@ function App() {
           <Route exact path={`/`}>
               <Form create={true}/>
           </Route>
-          <Route exact path={`/tasks`}>
+          <Route path={`/tasks`}>
             {
               loaded? <TaskList list={tasks}/>:''
             }
+          </Route>
+          <Route path={`/tasks/:id`}>
+            <Detail />
           </Route>
         </Switch>
       </Router>

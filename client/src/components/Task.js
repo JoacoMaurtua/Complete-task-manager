@@ -1,4 +1,7 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
+import { useParams } from 'react-router';
+import axios from 'axios';
 
 export default function Task({task}) {
   return (

@@ -1,6 +1,5 @@
 import React from 'react';
-import {useHistory,Link,useParams} from 'react-router-dom';
-import axios from 'axios';
+import {useHistory} from 'react-router-dom';
 import Task from './Task';
 
 
