@@ -13,7 +13,7 @@ function App() {
   useEffect(() =>{
     axios.get('/api/tasks')
         .then(res=>{
-          setTasks(res.data.data.tasks);
+          setTasks(res.data.data);
           setLoaded(true);
         });
   },[]);

@@ -78,8 +78,8 @@ export default function Form({create,update}) {
 
         <button className = "taskButton" type="submit">Crear tarea</button>
 
-        <Link style={{textDecoration:'none'}}>
-          <p>Ver todas las tareas</p>
+        <Link to={'/tasks'} style={{textDecoration:'none'}}>
+          <p className="tasksLink">Ver todas las tareas</p>
         </Link>
         
 

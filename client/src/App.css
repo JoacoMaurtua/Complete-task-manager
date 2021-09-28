@@ -93,13 +93,13 @@ input, textarea{
   
 }
 
-p{
+.tasksLink{
   color:#fff;
   font-weight: bold;
   transform: scale(0.87);
 }
 
-p:hover{
+.tasksLink:hover{
   transform: scale(0.90);
   transition: all 0.3s ease-in-out;
   font-size: 18px;
