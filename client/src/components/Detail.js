@@ -17,6 +17,16 @@ export default function Detail() {
     history.push('/tasks')
   }
 
+  const firstDate = new Date(singleTask.date);
+  let time = firstDate.getDate() + "/"
+                + (firstDate.getMonth()+1)  + "/" 
+                + firstDate.getFullYear() + " "
+                + firstDate.getHours() + ":"
+                + firstDate.getMinutes() + ":" 
+                + firstDate.getSeconds();
+  //console.log(time);
+
+  
   return (
     <div className="detail-container">
       <button className="btn-back task-btn" onClick={e => taskList(e)}>
@@ -24,8 +34,12 @@ export default function Detail() {
       </button>
       <h2>Task Detail</h2>
       <p><span>Title:</span> {singleTask.title}</p>
-      <p><span>Date:</span> {singleTask.date}</p>
-      <p><span>Description:</span> {singleTask.description}</p>
+      <p><span>Date:</span> {time}</p>
+      {
+         singleTask.description&&( <p><span>Description:</span> {singleTask.description}</p>)
+      }
+     
+      
     </div>
   )
 }

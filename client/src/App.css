@@ -54,10 +54,10 @@ label{
   font-weight: 600;
 }
 
-input, textarea{
+input, textarea, .datePicker input{
   background-color: #5e60ce;
   color: #fff;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
   width: 18.75rem;
   min-width: 15.625rem;
   padding: 15px 10px 10px 20px;
@@ -67,12 +67,17 @@ input, textarea{
   border: none;
   border-radius: 20px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-  transform: translateY(3px);
+}
+
+.datePicker input{
+  margin-bottom: .1rem;
+}
+
+.datePicker .MuiInput-underline::before{
+  display:none;
 }
 
 
-.datePicker input{color:white;}
-  
 
  .taskButton{
   min-width: 6.25rem;
