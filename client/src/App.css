@@ -166,6 +166,14 @@ input, textarea{
   font-size: 1.2rem;
 }
 
+.btn-delete{
+  color: rgb(243, 92, 92);
+}
+
+.btn-delete:hover{
+  font-size: 1.2rem;
+}
+
 
 /*TASK LIST END*/
 
