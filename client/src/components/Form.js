@@ -1,9 +1,13 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import axios from 'axios';
 import {DateTimePicker} from '@material-ui/pickers';
 import {Link, useParams} from 'react-router-dom';
+import { MyContext } from '../App';
+import Swal from 'sweetalert2';
 
 export default function Form({create,update}) {
+
+  const {tasks,setTasks} = useContext(MyContext);
 
   const [dateSelected, setDateSelected] = useState(new Date());
   console.log(dateSelected);
@@ -29,7 +33,12 @@ export default function Form({create,update}) {
     axios.post('api/tasks/create',taskInput)
         .then(res=>{
           if(res.data.data){
-            console.log(res.data.data)
+            setTasks(tasks.concat([res.data.data]))
+            Swal.fire({
+              icon:'success',
+              title:'Added task!',
+              text: 'A task was added successfully'
+            })
           }else{
             alert(res.data.error.message)
           }
@@ -48,7 +57,16 @@ export default function Form({create,update}) {
   //funcion para actualizar una tarea:
   const updateTask =()=>{
     axios.put(`/api/tasks/update/${id}`,taskInput)
-        .then(res => console.log(res));
+        .then(res => {
+          const index = tasks.findIndex(result => result._id === id)
+          tasks.splice(index,1,taskInput);
+          setTasks(tasks);
+          Swal.fire({
+            icon:'success',
+            title:'Edited task!',
+            text: 'A task was edited successfully'
+          })
+        });
   }
 
   const handleOnSubmit =e=>{

@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, createContext } from 'react';
 import './App.css';
 import axios from 'axios';
 import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import Form from './components/Form';
 import TaskList from './components/TaskList';
 import Detail from './components/Detail';
+
+export const MyContext = createContext();
 
 function App() {
 
@@ -21,24 +23,26 @@ function App() {
 
   return (
     <div className="container">
-      <Router>
-        <Switch>
-          <Route exact path={`/`}>
-              <Form create={true}/>
-          </Route>
-          <Route exact path={`/tasks`}>
-            {
-              loaded? <TaskList list={tasks} setList={setTasks}/>:''
-            }
-          </Route>
-          <Route exact path={`/tasks/:id`}>
-            <Detail />
-          </Route>
-          <Route exact path={`/tasks/:id/edit`}>
-              <Form update={true}/>
-          </Route>
-        </Switch>
-      </Router>
+      <MyContext.Provider value={{tasks,setTasks}}>
+        <Router>
+          <Switch>
+            <Route exact path={`/`}>
+                <Form create={true}/>
+            </Route>
+            <Route exact path={`/tasks`}>
+              {
+                loaded? <TaskList list={tasks} setList={setTasks}/>:''
+              }
+            </Route>
+            <Route exact path={`/tasks/:id`}>
+              <Detail />
+            </Route>
+            <Route exact path={`/tasks/:id/edit`}>
+                <Form update={true}/>
+            </Route>
+          </Switch>
+        </Router>
+      </MyContext.Provider>
     </div>
   );
 }
