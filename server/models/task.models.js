@@ -7,7 +7,7 @@ const taskSchema = new mongoose.Schema({
   },
 
   date:{
-    type: Date
+    type: String
   },
 
   description:{

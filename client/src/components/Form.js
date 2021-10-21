@@ -54,7 +54,7 @@ export default function Form({create,update}) {
     }
   },[id])
 
-  //funcion para actualizar una tarea:
+
   const updateTask =()=>{
     axios.put(`/api/tasks/update/${id}`,taskInput)
         .then(res => {

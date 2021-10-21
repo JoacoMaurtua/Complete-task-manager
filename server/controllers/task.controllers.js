@@ -1,7 +1,7 @@
 const Task = require('../models/task.models');
 
 const findTasks = (req,res) =>{
-    Task.find({})
+    Task.find({}).sort('title')
        .then(results => res.json({data: results}))
        .catch(error=>{
          res.json({error:error, message:'Tasks not found'})
@@ -32,7 +32,7 @@ const createTask = (req,res) =>{
 
 const updateTask = (req,res) =>{
     Task.findOneAndUpdate({_id:req.params.id}, req.body, {new:true})
-    .then(results => res.json({data:results}))
+      .then(results => res.json({data:results}))
       .catch(error=>{
         res.json({error:error, message:'Could not update a task'})
         res.sendStatus(500);
