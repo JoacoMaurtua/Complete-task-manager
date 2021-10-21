@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import Form from './components/Form';
 import TaskList from './components/TaskList';
 import Detail from './components/Detail';
+import Login from './components/Login';
 
 export const MyContext = createContext();
 
@@ -26,6 +27,9 @@ function App() {
       <MyContext.Provider value={{tasks,setTasks}}>
         <Router>
           <Switch>
+            <Route exact path={`/login`}>
+                <Login/>
+            </Route>
             <Route exact path={`/`}>
                 <Form create={true}/>
             </Route>
