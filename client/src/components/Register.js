@@ -1,14 +1,14 @@
 import React from 'react';
-import loginIng from '../images/login.svg';
+import RegisterIng from '../images/register.svg';
 
-export default function Register() {
+export default function Register({containerRef}) {
   return (
     <div>
       <div className="base-container">
       <div className="header">Register</div>
       <div className="content">
         <div className="image">
-          <img src={loginIng} alt="logoForm"/>
+          <img src={RegisterIng} alt="logoForm"/>
         </div>
         <div className="form">
           <div className="form-group">
@@ -27,7 +27,7 @@ export default function Register() {
           </div>
 
           <div className="footer">
-            <button type="button" className="btn">Register</button>
+            <button type="submit" className="btn-account">Register</button>
           </div>
         </div>
       </div>

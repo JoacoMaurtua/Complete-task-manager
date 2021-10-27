@@ -93,7 +93,6 @@ input, textarea, .datePicker input{
   padding: .5rem 1rem;
 } 
 
- 
 .taskButton:hover{background-color: #48bfe3;}
   
 
@@ -196,15 +195,26 @@ input, textarea, .datePicker input{
 
 /*BEGIN THE LOGIN*/
 .base-container {
-  width: 100%;
+  background-color: #6930c3;
+  color: white;
+  /*width: 100%;*/
   display: flex;
   flex-direction:column;
   align-items: center;
+  width: 25%;
+  min-width:28.125rem;
+  height: 37.5rem;
+  padding: .875rem;
+  box-sizing: border-box;
+  border-radius: .375rem;
+  box-shadow: 0 15px 30px rgba(4, 40, 49, 0.4);
 }
 
 .base-container  .header{
-  font-size:35px;
+  font-size:25px;
   font-weight: bold;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
 }
 
 .content{
@@ -213,12 +223,11 @@ input, textarea, .datePicker input{
 }
 
 .content .image{
-  width: 21em;
+  width: 18em;
 }
 
 .content .image img{
-  width: 100%;
-  height: 100%;
+  width: 70%;
 }
 
 .content .form{
@@ -245,7 +254,7 @@ input, textarea, .datePicker input{
   height: 37px;
   padding: 0px 10px;
   font-size: 16px;
-  background-color:#5e60ce;
+  background:#5e60ce !important;
   border: 0;
   border-radius: 4px;
   margin-bottom: 31px;
@@ -255,4 +264,29 @@ input, textarea, .datePicker input{
 .content .form .form-group input:focus{
   outline: none;
   box-shadow: 0px 0px 12px 0.8px #80ffdb;
+}
+
+.footer .btn-account{
+  min-width: 6.25rem;
+  background-color: #5390d9; 
+  color: white;
+  border:none;
+  font-family:'Montserrat', sans-serif;
+  font-size: 14px;
+  border-radius: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  outline: none;
+  cursor: pointer;
+  padding: .5rem 1rem;
+}
+
+.footer .btn-account:hover{background-color: #48bfe3;}
+
+.footer p{
+  color: white;
+}
+
+.footer p:hover{
+  font-weight: bold;
+  color: #80ffdb
 }

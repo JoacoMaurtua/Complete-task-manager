@@ -6,6 +6,7 @@ import Form from './components/Form';
 import TaskList from './components/TaskList';
 import Detail from './components/Detail';
 import Login from './components/Login';
+import Register from './components/Register';
 
 export const MyContext = createContext();
 
@@ -13,6 +14,7 @@ function App() {
 
   const [tasks,setTasks] = useState([]);
   const [loaded,setLoaded] = useState(false);
+  
 
   useEffect(() =>{
     axios.get('/api/tasks')
@@ -29,6 +31,9 @@ function App() {
           <Switch>
             <Route exact path={`/login`}>
                 <Login/>
+            </Route>
+            <Route exact path={`/register`}>
+                <Register/>
             </Route>
             <Route exact path={`/`}>
                 <Form create={true}/>

@@ -1,7 +1,9 @@
 import React from 'react';
 import loginIng from '../images/login.svg';
+import {Link} from 'react-router-dom';
 
-export default function Login() {
+
+export default function Login({containerRef}) {
   return (
     <div className="base-container">
       <div className="header">Login</div>
@@ -20,10 +22,14 @@ export default function Login() {
             <input type="password" name="username" placeholder="password"/>
           </div>
           <div className="footer">
-            <button type="button" className="btn">Login</button>
+            <button type="submit" className="btn-account">Login</button>
+            <Link to={'/register'} style={{textDecoration:'none'}}>
+              <p>You do not have an account?</p>
+            </Link>
           </div>
         </div>
       </div>
     </div>
   )
 }
+  

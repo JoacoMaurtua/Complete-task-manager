@@ -122,9 +122,7 @@ export default function Form({create,update}) {
           <p className="tasksLink">See all my tasks</p>
         </Link>
         
-
-      </form>
-      
+      </form>      
     </div>
   )
 }
