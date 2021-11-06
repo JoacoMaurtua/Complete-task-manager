@@ -33,24 +33,19 @@ const updateUser =(req,res) =>{
   User.findOneAndUpdate({_id:req.params.id}, req.body, {new:true})
       .then(results => res.json({data:results}))
       .catch(error=>{
-        res.json({error:error, message:'Could not update a task'})
+        res.json({error:error, message:'Could not update a user'})
         res.sendStatus(500);
       })
 };
 
 const deleteUser =(req,res) =>{
-  Task.deleteOne({_id:req.params.id})
+  User.deleteOne({_id:req.params.id})
   .then(results => res.json({data:results}))
     .catch(error=>{
-      res.json({error:error, message:'Could not delete a task'})
+      res.json({error:error, message:'Could not delete a user'})
       res.sendStatus(500);
     })
 }
-
-
-
-
-
 
 
 
