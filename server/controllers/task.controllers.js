@@ -46,7 +46,7 @@ const deleteTask =(req,res) =>{
     .then(results => res.json({data:results}))
       .catch(error=>{
         res.json({error:error, message:'Could not delete a task'})
-        res.sendStatus(202);
+        res.sendStatus(500);
       })
 }
 

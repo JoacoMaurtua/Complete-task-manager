@@ -14,7 +14,7 @@ const taskSchema = new mongoose.Schema({
     type: String
   }
 
-},{timestamps:true});
+},{timestamps:true}); //--> Hora en la que se crea y actualiza algo en la DB
 
 const Task = mongoose.model('Task', taskSchema);
 

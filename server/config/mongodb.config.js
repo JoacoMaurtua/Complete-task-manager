@@ -4,7 +4,7 @@ const dataBase = process.env.DB;
 
 const connectDB = async() =>{
   try{
-    await mongoose.connect(dataBase,{
+    await mongoose.connect(dataBase,{ //Incorporar los metodos de mongoose a la DB
       useNewUrlParser: true,
       useUnifiedTopology: true
     });
