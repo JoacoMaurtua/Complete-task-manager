@@ -88,6 +88,7 @@ export default function Form({create,update}) {
       <form onSubmit={handleOnSubmit}>
         <label htmlFor="title"Title>Title: </label>
         <input
+          className="app-input"
           name="title"
           value={title}
           id="title"
@@ -105,6 +106,7 @@ export default function Form({create,update}) {
 
         <label htmlFor='textarea'>Description: </label>
         <textarea
+            className="app-input"
             name="description"
             value={description}
             id="textarea"

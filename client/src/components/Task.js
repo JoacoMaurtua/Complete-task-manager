@@ -19,7 +19,6 @@ export default function Task({task,functionD}) {
           </button>
         </Link>
          
-
           <button className="btn-delete task-btn" onClick={e => functionD(task._id)}>
             <i className="fas fa-trash-alt"></i>
           </button>

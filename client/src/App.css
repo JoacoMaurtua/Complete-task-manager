@@ -19,7 +19,7 @@
   align-items: center;
 }
 
-.formContainer, .taskList-container, .detail-container{
+.formContainer, .taskList-container, .detail-container, .base-container {
   background-color: #6930c3;
   color: white;
   width: 25%;
@@ -35,7 +35,6 @@ h2 {
   font-weight: 600;
   font-size: 30px;
   margin: 2.313rem;
-
 }
 
 
@@ -54,7 +53,7 @@ label{
   font-weight: 600;
 }
 
-input, textarea, .datePicker input{
+.app-input, .datePicker input{
   background-color: #5e60ce;
   color: #fff;
   margin-bottom: 1.5rem;
@@ -69,14 +68,29 @@ input, textarea, .datePicker input{
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
+.app-input::placeholder{
+  color: rgb(207, 207, 207);
+}
+
+
+
+.app-input:hover{
+  box-shadow: 0px 0px 12px 0.8px #80ffdb
+
+}
+
+
 .datePicker input{
   margin-bottom: .1rem;
+}
+
+.datePicker input:hover{
+  box-shadow: 0px 0px 12px 0.8px #80ffdb
 }
 
 .datePicker .MuiInput-underline::before{
   display:none;
 }
-
 
 
  .taskButton{
@@ -118,20 +132,18 @@ input, textarea, .datePicker input{
 
 /*TASK LIST BEGIN*/
 
+.taskList-container, .detail-container
+  {background-color: #5e60ce;}
+
 .btn-back{
   float: left;
   font-size: 2rem;
   color: #64dfdf;
- 
 }
 
 .btn-back:hover{color: #80ffdb;}
   
-
-.taskList-container, .detail-container
-  {background-color: #5e60ce;}
   
-
 .list-item{
   display: flex;
   justify-content: space-between;
@@ -194,21 +206,7 @@ input, textarea, .datePicker input{
 /*TASK DETAIL END*/
 
 /*BEGIN THE LOGIN*/
-.base-container {
-  background-color: #6930c3;
-  color: white;
-  /*width: 100%;*/
-  display: flex;
-  flex-direction:column;
-  align-items: center;
-  width: 25%;
-  min-width:28.125rem;
-  height: 37.5rem;
-  padding: .875rem;
-  box-sizing: border-box;
-  border-radius: .375rem;
-  box-shadow: 0 15px 30px rgba(4, 40, 49, 0.4);
-}
+
 
 .base-container  .header{
   font-size:25px;
@@ -248,23 +246,7 @@ input, textarea, .datePicker input{
   font-size: 20px;
 }
 
-.content .form .form-group input{
-  margin-top: 6px;
-  min-width:18em;
-  height: 37px;
-  padding: 0px 10px;
-  font-size: 16px;
-  background:#5e60ce !important;
-  border: 0;
-  border-radius: 4px;
-  margin-bottom: 31px;
-  transition: all 250ms ease-in-out;
-}
 
-.content .form .form-group input:focus{
-  outline: none;
-  box-shadow: 0px 0px 12px 0.8px #80ffdb;
-}
 
 .footer .btn-account{
   min-width: 6.25rem;

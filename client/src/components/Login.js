@@ -14,12 +14,12 @@ export default function Login({containerRef}) {
         <div className="form">
           <div className="form-group">
             <label htmlFor="username">Username</label>
-            <input type="text" name="username" placeholder="username"/>
+            <input type="text" name="username" placeholder="username or email" className="app-input"/>
           </div>
 
           <div className="form-group">
             <label htmlFor="username">Password</label>
-            <input type="password" name="username" placeholder="password"/>
+            <input type="password" name="username" placeholder="password" className="app-input"/>
           </div>
           <div className="footer">
             <button type="submit" className="btn-account">Login</button>

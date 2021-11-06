@@ -39,7 +39,6 @@ export default function Detail() {
          singleTask.description&&( <p><span>Description:</span> {singleTask.description}</p>)
       }
      
-      
     </div>
   )
 }

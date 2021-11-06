@@ -13,17 +13,17 @@ export default function Register({containerRef}) {
         <div className="form">
           <div className="form-group">
             <label htmlFor="username">Username</label>
-            <input type="text" name="username" placeholder="username"/>
+            <input type="text" name="username" placeholder="username" className="app-input"/>
           </div>
 
           <div className="form-group">
-            <label htmlFor="username">Email</label>
-            <input type="email" name="email" placeholder="email"/>
+            <label htmlFor="email">Email</label>
+            <input type="email" name="email" placeholder="email" className="app-input"/>
           </div>
 
           <div className="form-group">
             <label htmlFor="username">Password</label>
-            <input type="password" name="username" placeholder="password"/>
+            <input type="password" name="username" placeholder="password" className="app-input"/>
           </div>
 
           <div className="footer">

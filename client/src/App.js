@@ -29,13 +29,13 @@ function App() {
       <MyContext.Provider value={{tasks,setTasks}}>
         <Router>
           <Switch>
-            <Route exact path={`/login`}>
+            <Route exact path={`/`}>
                 <Login/>
             </Route>
             <Route exact path={`/register`}>
                 <Register/>
             </Route>
-            <Route exact path={`/`}>
+            <Route exact path={`/task`}>
                 <Form create={true}/>
             </Route>
             <Route exact path={`/tasks`}>

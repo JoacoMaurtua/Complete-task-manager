@@ -10,7 +10,7 @@ function TaskList({list,setList}) {
   const {id} = useParams();
   
   const taskForm = e =>{
-    history.push('/')
+    history.push('/task')
   }; 
 
   const deleteTask = id =>{
@@ -49,7 +49,6 @@ function TaskList({list,setList}) {
           ))
         }
       </ul>
- 
     </div>
   )
 }
