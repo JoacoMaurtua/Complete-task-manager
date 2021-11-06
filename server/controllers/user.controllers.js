@@ -7,7 +7,7 @@ const findUsers = (req,res) =>{
         res.json({error:error, message:'Users not found'})
         res.sendStatus(404)
       })
-}
+};
 
 
 const findSingleUser = (req,res) =>{
@@ -17,7 +17,23 @@ const findSingleUser = (req,res) =>{
         res.json({error:error, message:'User not found'})
         res.sendStatus(404)
       })
-}
+};
+
+const createUser = (req,res) =>{
+  console.log(req.body)
+  User.create(req.body)
+      .then(results => res.json({data:results}))
+      .catch(error=>{
+        res.json({error:error, message:'Could not create a user'})
+        res.sendStatus(500);
+      })
+};
 
 
-module.exports = {findUsers,findSingleUser};
+
+
+
+
+
+
+module.exports = {findUsers,findSingleUser,createUser};
