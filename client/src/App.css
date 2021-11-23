@@ -222,6 +222,8 @@ label{
 
 .content .image{
   width: 18em;
+  margin-left: 5rem;
+  margin-top: 1.5rem;
 }
 
 .content .image img{

@@ -1,5 +1,7 @@
 const mongoose = require("mongoose");
 
+const {taskSchema} = require('./task.models');
+
 const userSchema = new mongoose.Schema({
   userName:{
     type: String,
@@ -13,7 +15,8 @@ const userSchema = new mongoose.Schema({
     validate:{
       validator:val => /^([\w-.]+@([\w-]+.)+[\w-]+)?$/.test(val), //formato correcto del correo --> https://regexr.com/95714
       message:'Please type a correct format for the email!'
-    }
+    },
+    unique:true
   },
 
   password:{
@@ -21,7 +24,10 @@ const userSchema = new mongoose.Schema({
     required:[true,'A password is required!'],
     minlength:[8,'The password must be great than 8 characters']
 
-  }
+  },
+
+  tasks: [taskSchema]
+
 },{timestamps:true});
 
 const User = mongoose.model('User',userSchema);
