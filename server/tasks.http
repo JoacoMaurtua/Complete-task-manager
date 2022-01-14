@@ -11,7 +11,8 @@ POST http://localhost:8000/api/tasks/create
 Content-Type: application/json
 
 {
-  "title" : "Read a good book",
+  "user": "Joaco Master",
+  "title" : "Read a good book 3",
   "date" : "2021-09-22",
   "description": "About Nfts"
 }
@@ -29,4 +30,4 @@ Content-Type: application/json
 
 
 ###DELETE TASKS
-DELETE http://localhost:8000/api/tasks/delete/61e1b377e10e42f33ed0a59d
+DELETE http://localhost:8000/api/tasks/delete/61e1cbd29da0838c09d163f6

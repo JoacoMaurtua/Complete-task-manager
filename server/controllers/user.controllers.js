@@ -74,8 +74,8 @@ const loginUser = (req, res) => {
         res.json({error: true, message: "User not exists"})
       } else */ 
       //2.
-      const {email} = req.body;
-      console.log({emailInput: req.body.email, emailOficial: email});
+      //const {email} = req.body;
+      //console.log({emailInput: req.body.email, emailOficial: email});
       if(result) {
         //esta promesa de abajo devuelve algo un resultado si son iguales amabas contraseñas sino un error que son diferentes
         bcrypt.compare(req.body.password, result.password)

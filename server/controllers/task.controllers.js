@@ -20,9 +20,20 @@ const findSingleTask = (req,res) =>{
 };
 
 const createTask = (req,res) =>{
-  console.log(req.body)
+ // console.log(req.body)
+  const { userr } = req;
+ /*  const taskk = new Task({
+    ...req.body,
+    user: user._id
+  });
+  try {
+    await taskk.save();
+    res.status(201).send(task);
+  } catch (error) {
+    res.status(400).send(error);
+  } */
   Task.create(req.body)
-      .then(results => res.json({data:results}))
+      .then(results => res.json({...results, user: userr._id}))
       .catch(error=>{
         res.json({error:error, message:'Could not create a task'})
         res.sendStatus(500);
