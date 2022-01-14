@@ -1,8 +1,8 @@
 const mongoose = require("mongoose");
-
+const bcrypt = require("bcrypt");
 const {taskSchema} = require('./task.models');
 
-const userSchema = new mongoose.Schema({
+const UserSchema = new mongoose.Schema({
   userName:{
     type: String,
     required:[true,'A user name is required!'],
@@ -26,11 +26,22 @@ const userSchema = new mongoose.Schema({
 
   },
 
-  tasks: [taskSchema]
+  //tasks: [taskSchema]
 
 },{timestamps:true});
 
-const User = mongoose.model('User',userSchema);
+UserSchema.pre('save', function(next){
+  //necesitamos el bcrypt para hashear las contraseñas por seguridad y luego almacenarlas en la base de datos mongoDB, su fueramos los devs de la aplicacion nos convertiriamos en hackers sino se hashea los passwords!!!
+  //hasheamos la contraseña que se almacenará en la BD, 10 # de veces que se hashea (se encripta) por seguridad
+  //es una promesa que nos devuelve un resultado
+  bcrypt.hash(this.password, 10)
+    .then(hash => {
+      this.password = hash; //la contraseña que se almacenara en la BD sera la encriptada
+      next(); //luego de hacerlo salta este next() es como una especie de brack de un switch case
+    })
+})
+
+const User = mongoose.model('User',UserSchema);
 
 module.exports = User;
 

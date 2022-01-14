@@ -9,10 +9,11 @@ const connectDB = async() =>{
       useUnifiedTopology: true
     });
 
-    console.log(`2: Established connection whit DB`);
+    console.log(`2: Established connection with DB`);
 
   }catch(err){
     console.error(err);
+    process.exit(1);
   }
 };
 

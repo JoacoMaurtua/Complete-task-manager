@@ -1,6 +1,7 @@
 require('dotenv').config(); //SEFURIDAD PARA VARIABLES DE ENTORNO
-
+const cors = require('cors');
 const express = require('express');
+const cookieParser = require('cookie-parser');
 
 const app = express();
 
@@ -12,8 +13,9 @@ mongodb();
 
 //MIDLEWARES PARA SOLICITUDES POST
 app.use(express.json());
-app.use(express.urlencoded({extended:true}))
+app.use(express.urlencoded({extended:true}));
 
+app.use(cors({credentials: true, origin : 'http://localhost:3000'}));
 
 //RUTA PARA TAREAS Y USUARIOS:
 app.use('/api',require('./routes/task.routes'));
@@ -23,5 +25,5 @@ app.use('/api',require('./routes/user.routes'));
 
 
 app.listen(PORT,()=>{
-  console.log(`1: Sever is runnig on port ${PORT}`);
+  console.log(`1: Sever is running on port ${PORT}`);
 })

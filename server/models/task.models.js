@@ -3,7 +3,8 @@ const mongoose = require('mongoose');
 const taskSchema = new mongoose.Schema({
 
   user:{
-    type: mongoose.Schema.Types.ObjectId,
+    //type: mongoose.Schema.Types.ObjectId,
+    type: String,
     required:true,
     ref: 'User'
   },
@@ -25,4 +26,4 @@ const taskSchema = new mongoose.Schema({
 
 const Task = mongoose.model('Task', taskSchema);
 
-module.exports = {Task,taskSchema};
+module.exports = {Task, taskSchema};

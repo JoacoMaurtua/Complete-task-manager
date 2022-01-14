@@ -1,15 +1,15 @@
 ###GET USERS
 
-GET http://localhost:8000/api/users
+###GET http://localhost:8000/api/users
 
 ###GET A SINGLE USERS
 
-GET http://localhost:8000/api/users/61860059d2171c23ea4ac611
+###GET http://localhost:8000/api/users/61860059d2171c23ea4ac611
 
 
 
-###CREATE A USER
-POST http://localhost:8000/api/users/create
+###REGISTER A USER
+POST http://localhost:8000/api/users/register
 Content-Type: application/json
 
 

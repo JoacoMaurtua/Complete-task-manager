@@ -11,8 +11,10 @@ POST http://localhost:8000/api/tasks/create
 Content-Type: application/json
 
 {
+  "user": "Joaquin",
   "title" : "Read a good book",
-  "date" : "2021-09-22"
+  "date" : "2021-09-22",
+  "description": "About Nfts"
 }
 
 ###PUT TASK
