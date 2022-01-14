@@ -1,39 +1,38 @@
 ###GET USERS
 
-###GET http://localhost:8000/api/users
+GET http://localhost:8000/api/users
 
 ###GET A SINGLE USERS
 
 ###GET http://localhost:8000/api/users/61860059d2171c23ea4ac611
 
-
+###DELETE A USER
+DELETE http://localhost:8000/api/users/delete/61860059d2171c23ea4ac611
 
 ###REGISTER A USER
 POST http://localhost:8000/api/users/register
 Content-Type: application/json
 
-
 {
-  "userName": "Joaco Master",
-  "email": "joacomaurtua@gmail.com",
+  "userName": "Master",
+  "email": "joaco@gmail.com",
   "password": "12345678"
 }
 
-
-###UPDATE A USER
-PUT http://localhost:8000/api/users/update/61860059d2171c23ea4ac611
+###LOGIN A USER
+POST http://localhost:8000/api/users/login
 Content-Type: application/json
 
-
 {
-  "userName": "Joaco Maurtua",
-  "email": "joacomaurtua@gmail.com",
-  "password": "123aa678"
+    "email": "joaco@gmail.com",
+    "password": "12345678"
 }
 
 
-###DELETE A USER
-DELETE http://localhost:8000/api/users/delete/61860059d2171c23ea4ac611
+
+
+
+
 
 
 

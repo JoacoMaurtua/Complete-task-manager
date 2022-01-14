@@ -15,6 +15,7 @@ mongodb();
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 
+app.use(cookieParser())
 app.use(cors({credentials: true, origin : 'http://localhost:3000'}));
 
 //RUTA PARA TAREAS Y USUARIOS:

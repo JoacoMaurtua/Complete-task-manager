@@ -1,7 +1,9 @@
 const User = require('../models/user.models');
-const bcript = require("bcrypt");
+const bcrypt = require("bcryptjs");
+const {secretKey} = require('../config/jwt.config');
+const jwt = require('jsonwebtoken');
 
-/* const findUsers = (req,res) =>{
+const findUsers = (req,res) =>{
   User.find({}).sort('userName')
       .then(results => res.json({data:results}))
       .catch(error=>{
@@ -9,6 +11,8 @@ const bcript = require("bcrypt");
         res.sendStatus(404)
       })
 };
+
+/*
 
 
 const findSingleUser = (req,res) =>{
@@ -44,60 +48,68 @@ const registerUser = (req,res) =>{ //Register
   User.findOne({email: req.body.email})
     .then(result => {
       if(result){ //si ya existe el email
-        res.json({error:error, message:'The email is registered'});
+        res.json({error:true, message:'The email is registered'});
       } else { //sino existe se crea una nueva cuenta con un nuevo email
         User.create(req.body)
-          .then(result => res.json({data:result}))
+          .then(newAccount => res.json({data:newAccount}))
           .catch(error => {
             res.json({error:error, message:"Could not registered a user"});
             res.sendStatus(500);
           })
       }
     })
-    /*  console.log(req.body)
-     User.create(req.body)
-         .then(results => res.json({data:results}))
-         .catch(error=>{
-           res.json({error:error, message:'Could not create a user'})
-           res.sendStatus(500);
-         }) */
 };
 
 //loginUser
 //1. Verificamos que el email a escribir se encuentra almacenado en la BD
 //2. Comparamos la contraseña que ingresamos con la contraseña almacenada en la BD
+//3. Aqui creamos nuestra cookie => usertoken
 const loginUser = (req, res) => {
   //1.
+  //const {email} = req.body;
+  //console.log({emailInput: req.body.email, emailOficial: email});
   User.findOne({email: req.body.email})
     .then(result => {
-      if(result){
-        //2.
-        console.log("Prueba Login", {input: req.body.password, passwordBD: resultPassword})
+      /* if(result === null){
+        res.json({error: true, message: "User not exists"})
+      } else */ 
+      //2.
+      const {email} = req.body;
+      console.log({emailInput: req.body.email, emailOficial: email});
+      if(result) {
         //esta promesa de abajo devuelve algo un resultado si son iguales amabas contraseñas sino un error que son diferentes
         bcrypt.compare(req.body.password, result.password)
           .then(isCorrect => {
-            if(isCorrect) {
-              //si es correcto ambos passwords creamos nuestro payload que no es mas que la data del user.models.js
+            //si es correcto ambos passwords creamos nuestro payload que no es mas que la data del user.models.js
+            if(isCorrect){
               const payload = {
-
+                  _id: result._id,
+                  userName: result.userName,
+                  email: result.email
               }
+              //Generamos un token de usuario con la (data, y la clave super secreta)
+              const token = jwt.sign(payload, secretKey);
+              //abajo establecemos el valor del nombre de la cookie
+              //res.cookie("nombre de la cookie", valor asignado al nombre de la cookie, clave super secreta, opciones(propiedades como, codificar, expirar, dominio))
+              //httpOnly => mitiga el riesgo cuando se accede a una cookie protegida
+              //3. 
+              res.cookie("usertoken", token, secretKey, {httpOnly: true})
+                .json({message:"logIn", data: payload})
+            } else {
+              res.json({error: true, message: "Invalidate password"})
             }
-
           })
           //en caso de las contraseñas no ser iguales
-          .catch(error => 
-            res.json({error: error, message: "Invalidate Password"})
-          )
+          .catch(err => res.json({
+              error: err, message:"Invalidate password"
+          }))
       } else {
         res.json({error: true, message: "User not exist"})
-      }
+      } 
     })
     .catch(error => {//1.
-      res.json({error:error, message:"User Invalidate"});
+    res.json({error:error, message:"User invalidate"});
     })
 }
 
-
-
-
-module.exports = {deleteUser, registerUser, loginUser};
+module.exports = {findUsers, deleteUser, registerUser, loginUser};
