@@ -94,7 +94,7 @@ const loginUser = (req, res) => {
               //httpOnly => mitiga el riesgo cuando se accede a una cookie protegida
               //3. 
               res.cookie("usertoken", token, secretKey, {httpOnly: true})
-                .json({message:"logIn", data: payload})
+                .json({message:"log-in correctly", data: payload})
             } else {
               res.json({error: true, message: "Invalidate password"})
             }

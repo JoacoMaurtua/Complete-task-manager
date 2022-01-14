@@ -24,11 +24,16 @@ const UserSchema = new mongoose.Schema({
     required:[true,'A password is required!'],
     minlength:[8,'The password must be great than 8 characters']
 
-  },
-
-  //tasks: [taskSchema]
+  }
+  //,tasks: [taskSchema]
 
 },{timestamps:true});
+
+UserSchema.virtual("tasks", {
+  ref: "Task",
+  localField: "_id",
+  foreignField: "user"
+})
 
 UserSchema.pre('save', function(next){
   //necesitamos el bcrypt para hashear las contraseñas por seguridad y luego almacenarlas en la base de datos mongoDB, su fueramos los devs de la aplicacion nos convertiriamos en hackers sino se hashea los passwords!!!
