@@ -10,7 +10,7 @@ const authenticate = (req, res, next) => {
     jwt.verify(req.cookies.usertoken, secretKey, (err,payload) =>{
         if(err){
             //401 => unauthorized sino se encuentra la cookie reporta un 401
-            res.status(401).json({verified: false})
+            res.status(401).json({verified: false, message: "You logged in incorrectly"})
         } else { //si se encuentra no hace nada solo salta el paso
             next();
         }

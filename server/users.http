@@ -28,6 +28,10 @@ Content-Type: application/json
     "password": "12345678"
 }
 
+###LOGOUT A USER
+GET http://localhost:8000/api/users/logout
+
+
 
 
 

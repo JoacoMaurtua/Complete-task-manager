@@ -112,4 +112,8 @@ const loginUser = (req, res) => {
     })
 }
 
-module.exports = {findUsers, deleteUser, registerUser, loginUser};
+const logoutUser = (req, res) => {
+  res.clearCookie("usertoken").status(200).json({message: "Logout Correctly"})
+}
+
+module.exports = {findUsers, deleteUser, registerUser, loginUser, logoutUser};
