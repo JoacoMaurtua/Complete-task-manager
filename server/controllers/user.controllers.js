@@ -113,6 +113,7 @@ const loginUser = (req, res) => {
 }
 
 const logoutUser = (req, res) => {
+  //elimino la cookie usertoken con .clearCookie .status => aceptado no es un error en y el mensaje logout correctamente
   res.clearCookie("usertoken").status(200).json({message: "Logout Correctly"})
 }
 
