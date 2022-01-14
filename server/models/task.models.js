@@ -6,7 +6,7 @@ const taskSchema = new mongoose.Schema({
     //type: mongoose.Schema.Types.ObjectId,
     type: String,
     required:true,
-    ref: 'User'
+    //ref: 'User'
   },
 
   title:{

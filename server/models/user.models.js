@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
-const {taskSchema} = require('./task.models');
+//const {taskSchema} = require('./task.models');
 
 const UserSchema = new mongoose.Schema({
   userName:{
@@ -29,11 +29,11 @@ const UserSchema = new mongoose.Schema({
 
 },{timestamps:true});
 
-UserSchema.virtual("tasks", {
+/* UserSchema.virtual("tasks", {
   ref: "Task",
   localField: "_id",
   foreignField: "user"
-})
+}) */
 
 UserSchema.pre('save', function(next){
   //necesitamos el bcrypt para hashear las contraseñas por seguridad y luego almacenarlas en la base de datos mongoDB, su fueramos los devs de la aplicacion nos convertiriamos en hackers sino se hashea los passwords!!!

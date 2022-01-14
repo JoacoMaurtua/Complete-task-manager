@@ -14,8 +14,8 @@ POST http://localhost:8000/api/users/register
 Content-Type: application/json
 
 {
-  "userName": "Joaco Master",
-  "email": "joaco.maurtua@gmail.com",
+  "userName": "Joacos",
+  "email": "joacos@gmail.com",
   "password": "12345678"
 }
 
@@ -24,7 +24,7 @@ POST http://localhost:8000/api/users/login
 Content-Type: application/json
 
 {
-  "email": "joaco.maurtua@gmail.com",
+  "email": "joacos@gmail.com",
   "password": "12345678"
 }
 
