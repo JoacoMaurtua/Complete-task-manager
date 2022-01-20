@@ -79,9 +79,9 @@ const loginUser = (req, res) => {
       if(result) {
         //esta promesa de abajo devuelve algo un resultado si son iguales amabas contraseñas sino un error que son diferentes
         bcrypt.compare(req.body.password, result.password)
-          .then(isCorrect => {
+          .then(isCorrecto => {
             //si es correcto ambos passwords creamos nuestro payload que no es mas que la data del user.models.js
-            if(isCorrect){
+            if(isCorrecto){
               const payload = {
                   _id: result._id,
                   userName: result.userName,

@@ -6,6 +6,7 @@ const secretKey = process.env.SECRET_KEY;
 //si la tenemos autoriza sino no autoriza
 const authenticate = (req, res, next) => {
     //para saber la cookie userToken (demostrativo)
+    console.log({headers: req.headers.authorization})
     console.log({cookies:req.cookies.usertoken});
     jwt.verify(req.cookies.usertoken, secretKey, (err,payload) =>{
         if(err){

@@ -33,3 +33,4 @@ router.get('/users/logout', authenticate, logoutUser);
 
 module.exports = router;
 
+
