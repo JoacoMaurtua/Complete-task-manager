@@ -7,21 +7,52 @@ import TaskList from './components/TaskList';
 import Detail from './components/Detail';
 import Login from './components/Login';
 import Register from './components/Register';
-
+//import Swal from 'sweetalert2';
 export const MyContext = createContext();
 
 function App() {
 
+  //tasks
   const [tasks,setTasks] = useState([]);
+  //users
+  const [users, setUsers] = useState([]);
+  //Loading
   const [loaded,setLoaded] = useState(false);
   
 
   useEffect(() =>{
-    axios.get('/api/tasks')
+   /*  axios.get('/api/tasks')
         .then(res=>{
           setTasks(res.data.data);
           setLoaded(true);
-        });
+        }); */
+        const fetchTasks = async () => {
+          try{
+            const {data} = await axios.get('/api/tasks');
+            setTasks(data);
+            setLoaded(true);
+          }
+          catch(err){
+            /* Swal.fire({
+              icon: "error",
+              text: "Error in loading the data from tasks"
+            }) */
+          }
+        }
+        fetchTasks();
+        const fetchUsers = async () => {
+          try{
+            const {data} = await axios.get('/api/users');
+            setUsers(data);
+          }
+          catch(error){
+            /* Swal.fire({
+              icon: "error",
+              text: "Error in loading the data from users"
+            }) */
+          }
+        }
+        fetchUsers();
   },[]);
 
   return (
@@ -33,7 +64,7 @@ function App() {
                 <Login/>
             </Route>
             <Route exact path={`/register`}>
-                <Register/>
+                <Register users={users} setUsers={setUsers}/>
             </Route>
             <Route exact path={`/task`}>
                 <Form create={true}/>
