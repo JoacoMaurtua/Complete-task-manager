@@ -108,8 +108,10 @@ export default function Form({create,update, loaded}) {
 
   const {title,description} = taskInput;
 
+  
+  //return (loaded) ?
   return (
-    <div className="formContainer">
+      <div className="formContainer">
         <p className="tasksLink" onClick={(event) => logOut(event)}>log-out</p>
         {/* <Link to={'/'} style={{textDecoration:'none'}}>
             <p className="tasksLink">log-out</p>
@@ -147,21 +149,16 @@ export default function Form({create,update, loaded}) {
           ></textarea>
 
           {
-            create?<button className = "taskButton" type="submit" onClick={event => taskList(event)}>Create task</button>:
+            create?<button className = "taskButton" type="submit" onClick={event => addTasks(event)}>Create task</button>:
             update?<button className = "taskButton" type="submit">Edit task</button>:
             ''
           }
     
-         {/*  <Link to={'/tasks'} style={{textDecoration:'none'}}>
+          <Link to={'/tasks'} style={{textDecoration:'none'}}>
             <p className="tasksLink">See all my tasks</p>
-          </Link> */}
+          </Link>
           
         </form>      
       </div>
-  )
-   /* return (loaded) ?
-    (
-      
-    ) : (<div style={{fontSize:"2.5rem"}}>UFFFFFF you must first log in to see the content!!!!!</div>); */
-  
+    ) //: (<div style={{fontSize:"2.5rem"}}>UFFFFFF you must first log in to see the content!!!!!</div>);
 }
