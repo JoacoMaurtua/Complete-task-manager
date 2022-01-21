@@ -7,7 +7,8 @@ import TaskList from './components/TaskList';
 import Detail from './components/Detail';
 import Login from './components/Login';
 import Register from './components/Register';
-//import Swal from 'sweetalert2';
+import Swal from 'sweetalert2';
+
 export const MyContext = createContext();
 
 function App() {
@@ -26,33 +27,24 @@ function App() {
           setTasks(res.data.data);
           setLoaded(true);
         }); */
-        const fetchTasks = async () => {
-          try{
-            const {data} = await axios.get('/api/tasks');
-            setTasks(data);
-            setLoaded(true);
-          }
-          catch(err){
-            /* Swal.fire({
+        axios.get("/api/tasks")
+            .then(response => {
+              setTasks(response.data.data); 
+              setLoaded(true);
+            })
+            .catch(err => Swal.fire({
               icon: "error",
               text: "Error in loading the data from tasks"
-            }) */
-          }
-        }
-        fetchTasks();
-        const fetchUsers = async () => {
-          try{
-            const {data} = await axios.get('/api/users');
-            setUsers(data);
-          }
-          catch(error){
-            /* Swal.fire({
+            }))
+        axios.get("/api/users")
+            .then(response => {
+              setUsers(response.data.data);
+              setLoaded(true);
+            })
+            .catch(err => Swal.fire({
               icon: "error",
               text: "Error in loading the data from users"
-            }) */
-          }
-        }
-        fetchUsers();
+            }))
   },[]);
 
   return (

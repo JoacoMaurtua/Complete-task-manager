@@ -2,12 +2,12 @@ const mongoose = require('mongoose');
 
 const taskSchema = new mongoose.Schema({
 
-  user:{
+  /* user:{
     //type: mongoose.Schema.Types.ObjectId,
     type: String,
     required:true,
     //ref: 'User'
-  },
+  }, */
 
   title:{
     type: String,

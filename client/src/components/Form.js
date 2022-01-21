@@ -89,9 +89,10 @@ export default function Form({create,update}) {
         text: "Are you sure you want to exit the application?",
         icon: "warning",
         showCancelButton: true
-      })
-      .then(response => {
-        history.push(`/`);        
+      }).then(response => {
+        if(response.value){
+          history.push(`/`);        
+        }
       })
      
   }
@@ -142,7 +143,7 @@ export default function Form({create,update}) {
           ''
         }
   
-        <Link to={'/tasks'} style={{textDecoration:'none'}} onClick={(event) => logOut(event)}>
+        <Link to={'/tasks'} style={{textDecoration:'none'}}>
           <p className="tasksLink">See all my tasks</p>
         </Link>
         
