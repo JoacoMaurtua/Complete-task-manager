@@ -79,6 +79,7 @@ export default function Register({ users, setUsers }) {
                 onChange={onChange}
                 placeholder="username"
                 className="app-input"
+                required
               />
             </div>
 
@@ -92,6 +93,7 @@ export default function Register({ users, setUsers }) {
                 onChange={onChange}
                 placeholder="email"
                 className="app-input"
+                required
               />
             </div>
 
@@ -105,6 +107,7 @@ export default function Register({ users, setUsers }) {
                 onChange={onChange}
                 placeholder="password"
                 className="app-input"
+                required
               />
             </div>
 

@@ -1,7 +1,7 @@
 import React, {useState, useEffect, useContext} from 'react';
 import axios from 'axios';
 import {DateTimePicker} from '@material-ui/pickers';
-import {Link, useParams} from 'react-router-dom';
+import {Link, useHistory, useParams} from 'react-router-dom';
 import { MyContext } from '../App';
 import Swal from 'sweetalert2';
 
@@ -78,12 +78,34 @@ export default function Form({create,update}) {
     
   }
 
+  const history = useHistory();
+
+
+
+  const logOut = (event) => {
+    axios.get("/api/users/logout")
+      Swal.fire({
+        title:"Log-out",
+        text: "Are you sure you want to exit the application?",
+        icon: "warning",
+        showCancelButton: true
+      })
+      .then(response => {
+        history.push(`/`);        
+      })
+     
+  }
+
   const {title,description} = taskInput;
 
   return (
     <div className="formContainer">
+       <p className="tasksLink" onClick={(event) => logOut(event)}>log-out</p>
+      {/* <Link to={'/'} style={{textDecoration:'none'}}>
+          <p className="tasksLink">log-out</p>
+      </Link> */}
       {
-        create?<h2>Create a new Task</h2>:update?<h2>Update this task</h2>:''
+        create?<h2 style={{marginTop:"0rem"}}>Create a new Task</h2>:update?<h2>Update this task</h2>:''
       }
       <form onSubmit={handleOnSubmit}>
         <label htmlFor="title"Title>Title: </label>
@@ -119,8 +141,8 @@ export default function Form({create,update}) {
           update?<button className = "taskButton" type="submit">Edit task</button>:
           ''
         }
-
-        <Link to={'/tasks'} style={{textDecoration:'none'}}>
+  
+        <Link to={'/tasks'} style={{textDecoration:'none'}} onClick={(event) => logOut(event)}>
           <p className="tasksLink">See all my tasks</p>
         </Link>
         
