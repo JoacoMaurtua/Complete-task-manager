@@ -17,6 +17,8 @@ export default function Form({create,update, loaded}) {
 
   const {id} = useParams();
 
+  const history = useHistory();
+
   const [taskInput, setTaskInput] = useState({
     title:'',
     date:dateSelected,
@@ -40,14 +42,13 @@ export default function Form({create,update, loaded}) {
     axios.post('api/tasks/create',taskInput)
         .then(res=>{
           if(res.data.data){
+            taskList(event);
             setTasks(tasks.concat([res.data.data]))
-
             Swal.fire({
               icon:'success',
               title:'Added task!',
               text: 'A task was added successfully'
             })
-            taskList(event);
           }else{
             alert(res.data.error.message)
           }
@@ -87,7 +88,7 @@ export default function Form({create,update, loaded}) {
     
   }
 
-  const history = useHistory();
+  
 
 
 
@@ -149,7 +150,7 @@ export default function Form({create,update, loaded}) {
           ></textarea>
 
           {
-            create?<button className = "taskButton" type="submit" onClick={event => addTasks(event)}>Create task</button>:
+            create?<button className = "taskButton" type="submit">Create task</button>:
             update?<button className = "taskButton" type="submit">Edit task</button>:
             ''
           }

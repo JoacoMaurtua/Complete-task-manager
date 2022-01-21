@@ -4,6 +4,7 @@ import Swal from 'sweetalert2';
 import { useState } from 'react';
 import axios from 'axios';
 import { useRef } from 'react';
+import { useHistory } from 'react-router-dom';
 
 export default function Register({ users, setUsers }) {
 
@@ -11,7 +12,12 @@ export default function Register({ users, setUsers }) {
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
 
-  
+  const history = useHistory();
+
+  const loginForm = (event) => {
+      history.push(`/`)
+  }
+
   const [input, setInput] = useState({
     userName: "",
     email: "",
@@ -26,19 +32,20 @@ export default function Register({ users, setUsers }) {
     })
   }
 
-  const createUser = async (event) => {
+  const createUser = (event) => {
     axios.post(`/api/users/register`, input)
       .then(response => {
           if(response.data && response.data.data){
-              setUsers(users.concat([response.data.data]));
-              Swal.fire({
-                  icon: "success",
-                  text: "Registered with success!!"
-              })
+            loginForm(event);
+            setUsers(users.concat([response.data.data]));
+            Swal.fire({
+                icon: "success",
+                text: "Registered with success!!"
+            })
           } else {
               Swal.fire({
                   icon: "error",
-                  text: response.data.message
+                  text: response.data.error.message
               })
           }
       })
@@ -122,5 +129,3 @@ export default function Register({ users, setUsers }) {
     </div>
   );
 }
-
-
