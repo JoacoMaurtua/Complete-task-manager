@@ -30,8 +30,8 @@ export default function Login({loginOk, setLoginOk}) {
     axios.post("/api/users/login", login)
       .then(response => {
         if(response.data && !response.data.error){
-          setLoginOk(true);
           home(event);
+          setLoginOk(true);
         } else {
           Swal.fire({
             icon: "error",

@@ -9,7 +9,8 @@ export default function Form({create,update, loaded}) {
 
   const {tasks,setTasks} = useContext(MyContext);
 
-  console.log({estadoActivo: loaded});
+  //console.log({estadoActivo: loaded});
+
 
   const [dateSelected, setDateSelected] = useState(new Date());
   console.log(dateSelected);
@@ -22,6 +23,10 @@ export default function Form({create,update, loaded}) {
     description:''
   });
 
+  const taskList = (event) => {
+    history.push(`/tasks`);
+  }
+
   const handleOnChange =e=>{
     const {name,value} = e.target;
     setTaskInput({
@@ -31,16 +36,18 @@ export default function Form({create,update, loaded}) {
   };
 
   //Funcion para crear una tarea en la base de datos:
-  const addTasks =()=>{
+  const addTasks =(event)=>{
     axios.post('api/tasks/create',taskInput)
         .then(res=>{
           if(res.data.data){
             setTasks(tasks.concat([res.data.data]))
+
             Swal.fire({
               icon:'success',
               title:'Added task!',
               text: 'A task was added successfully'
             })
+            taskList(event);
           }else{
             alert(res.data.error.message)
           }
@@ -101,10 +108,8 @@ export default function Form({create,update, loaded}) {
 
   const {title,description} = taskInput;
 
-  
-   return (loaded) ?
-    (
-      <div className="formContainer">
+  return (
+    <div className="formContainer">
         <p className="tasksLink" onClick={(event) => logOut(event)}>log-out</p>
         {/* <Link to={'/'} style={{textDecoration:'none'}}>
             <p className="tasksLink">log-out</p>
@@ -142,17 +147,21 @@ export default function Form({create,update, loaded}) {
           ></textarea>
 
           {
-            create?<button className = "taskButton" type="submit">Create task</button>:
+            create?<button className = "taskButton" type="submit" onClick={event => taskList(event)}>Create task</button>:
             update?<button className = "taskButton" type="submit">Edit task</button>:
             ''
           }
     
-          <Link to={'/tasks'} style={{textDecoration:'none'}}>
+         {/*  <Link to={'/tasks'} style={{textDecoration:'none'}}>
             <p className="tasksLink">See all my tasks</p>
-          </Link>
+          </Link> */}
           
         </form>      
       </div>
-    ) : (<div>500</div>);
+  )
+   /* return (loaded) ?
+    (
+      
+    ) : (<div style={{fontSize:"2.5rem"}}>UFFFFFF you must first log in to see the content!!!!!</div>); */
   
 }
