@@ -92,14 +92,14 @@ export default function Form({create,update, loaded}) {
 
 
   const logOut = (event) => {
-    axios.get("/api/users/logout")
       Swal.fire({
         title:"Log-out",
         text: "Are you sure you want to exit the application?",
         icon: "warning",
         showCancelButton: true
-      }).then(response => {
-        if(response.value){
+      }).then(result => {
+        if(result.value){
+          axios.get("/api/users/logout")
           history.push(`/`);        
         }
       })
