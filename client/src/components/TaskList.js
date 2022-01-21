@@ -7,7 +7,7 @@ import Swal from 'sweetalert2';
 
 function TaskList({list,setList}) {
   const history = useHistory();
-  const {id} = useParams();
+  //const {id} = useParams();
   
   const taskForm = e =>{
     history.push('/task')

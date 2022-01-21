@@ -5,9 +5,11 @@ import {Link, useHistory, useParams} from 'react-router-dom';
 import { MyContext } from '../App';
 import Swal from 'sweetalert2';
 
-export default function Form({create,update}) {
+export default function Form({create,update, loaded}) {
 
   const {tasks,setTasks} = useContext(MyContext);
+
+  console.log({estadoActivo: loaded});
 
   const [dateSelected, setDateSelected] = useState(new Date());
   console.log(dateSelected);
@@ -99,55 +101,58 @@ export default function Form({create,update}) {
 
   const {title,description} = taskInput;
 
-  return (
-    <div className="formContainer">
-       <p className="tasksLink" onClick={(event) => logOut(event)}>log-out</p>
-      {/* <Link to={'/'} style={{textDecoration:'none'}}>
-          <p className="tasksLink">log-out</p>
-      </Link> */}
-      {
-        create?<h2 style={{marginTop:"0rem"}}>Create a new Task</h2>:update?<h2>Update this task</h2>:''
-      }
-      <form onSubmit={handleOnSubmit}>
-        <label htmlFor="title"Title>Title: </label>
-        <input
-          className="app-input"
-          name="title"
-          value={title}
-          id="title"
-          type="text"
-          onChange={handleOnChange}        
-        />
-
-        <label htmlFor='date'>Date: </label>
-        <DateTimePicker className="datePicker"
-          name="date"
-          style={{marginBottom:'3rem', color:'white'}} 
-          value={dateSelected}
-          onChange={setDateSelected}
-        />
-
-        <label htmlFor='textarea'>Description: </label>
-        <textarea
-            className="app-input"
-            name="description"
-            value={description}
-            id="textarea"
-            cols='30' rows='7.5'
-            onChange={handleOnChange}   
-        ></textarea>
-
-        {
-          create?<button className = "taskButton" type="submit">Create task</button>:
-          update?<button className = "taskButton" type="submit">Edit task</button>:
-          ''
-        }
   
-        <Link to={'/tasks'} style={{textDecoration:'none'}}>
-          <p className="tasksLink">See all my tasks</p>
-        </Link>
-        
-      </form>      
-    </div>
-  )
+   return (loaded) ?
+    (
+      <div className="formContainer">
+        <p className="tasksLink" onClick={(event) => logOut(event)}>log-out</p>
+        {/* <Link to={'/'} style={{textDecoration:'none'}}>
+            <p className="tasksLink">log-out</p>
+        </Link> */}
+        {
+          create?<h2 style={{marginTop:"0rem"}}>Create a new Task</h2>:update?<h2>Update this task</h2>:''
+        }
+        <form onSubmit={handleOnSubmit}>
+          <label htmlFor="title"Title>Title: </label>
+          <input
+            className="app-input"
+            name="title"
+            value={title}
+            id="title"
+            type="text"
+            onChange={handleOnChange}        
+          />
+
+          <label htmlFor='date'>Date: </label>
+          <DateTimePicker className="datePicker"
+            name="date"
+            style={{marginBottom:'3rem', color:'white'}} 
+            value={dateSelected}
+            onChange={setDateSelected}
+          />
+
+          <label htmlFor='textarea'>Description: </label>
+          <textarea
+              className="app-input"
+              name="description"
+              value={description}
+              id="textarea"
+              cols='30' rows='7.5'
+              onChange={handleOnChange}   
+          ></textarea>
+
+          {
+            create?<button className = "taskButton" type="submit">Create task</button>:
+            update?<button className = "taskButton" type="submit">Edit task</button>:
+            ''
+          }
+    
+          <Link to={'/tasks'} style={{textDecoration:'none'}}>
+            <p className="tasksLink">See all my tasks</p>
+          </Link>
+          
+        </form>      
+      </div>
+    ) : (<div>500</div>);
+  
 }

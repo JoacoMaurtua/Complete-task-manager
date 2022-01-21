@@ -4,7 +4,7 @@ import { Link, useHistory } from 'react-router-dom';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 
-export default function Login() {
+export default function Login({loginOk, setLoginOk}) {
   
   const [login, setLogin] = useState({
     email: "",
@@ -30,6 +30,7 @@ export default function Login() {
     axios.post("/api/users/login", login)
       .then(response => {
         if(response.data && !response.data.error){
+          setLoginOk(true);
           home(event);
         } else {
           Swal.fire({
