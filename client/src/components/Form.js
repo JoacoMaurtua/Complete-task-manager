@@ -4,8 +4,27 @@ import {DateTimePicker} from '@material-ui/pickers';
 import {Link, useHistory, useParams} from 'react-router-dom';
 import { MyContext } from '../App';
 import Swal from 'sweetalert2';
+//import Cookies from 'universal-cookie';
+import jwt_decode from "jwt-decode";
+
 
 export default function Form({create,update, loaded}) {
+
+  //const cookies = new Cookies();
+  //cookies.set('usertoken', 'data', { path: '/' });
+  //console.log({cookiesAuth: cookies.get('usertoken')}); // Pacman
+  /* const token = document.cookie.split("=")[1];
+  if(token){
+    const userObject = jwt_decode(token);
+    //console.log({cookiesAuth: userObject})
+    //console.log({cookiesAuth: document.cookie});
+    const userNameActual=userObject.userName;
+    console.log({userNameActual: userNameActual});
+  } */
+  
+  //const [cookies ] = useCookies(['usertoken']);
+  //const cookieForm = Cookies.get('usertoken')
+  //console.log(cookieForm)
 
   const {tasks,setTasks} = useContext(MyContext);
 
@@ -92,20 +111,6 @@ export default function Form({create,update, loaded}) {
 
 
 
-  const logOut = (event) => {
-      Swal.fire({
-        title:"Log-out",
-        text: "Are you sure you want to exit the application?",
-        icon: "warning",
-        showCancelButton: true
-      }).then(result => {
-        if(result.value){
-          axios.get("/api/users/logout")
-          history.push(`/`);        
-        }
-      })
-     
-  }
 
   const {title,description} = taskInput;
 
@@ -113,7 +118,7 @@ export default function Form({create,update, loaded}) {
   //return (loaded) ?
   return (
       <div className="formContainer">
-        <p className="tasksLink" onClick={(event) => logOut(event)}>log-out</p>
+        
         {/* <Link to={'/'} style={{textDecoration:'none'}}>
             <p className="tasksLink">log-out</p>
         </Link> */}
@@ -121,7 +126,7 @@ export default function Form({create,update, loaded}) {
           create?<h2 style={{marginTop:"0rem"}}>Create a new Task</h2>:update?<h2>Update this task</h2>:''
         }
         <form onSubmit={handleOnSubmit}>
-          <label htmlFor="title"Title>Title: </label>
+          <label htmlFor="title">Title: </label>
           <input
             className="app-input"
             name="title"
