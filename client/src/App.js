@@ -7,7 +7,6 @@ import TaskList from './components/TaskList';
 import Detail from './components/Detail';
 import Login from './components/Login';
 import Register from './components/Register';
-import Logout from './components/Logout';
 //import Swal from 'sweetalert2';
 
 export const MyContext = createContext();
@@ -61,7 +60,6 @@ function App() {
         <Router>
           <Switch>
             <Route exact path={`/`}>
-                <Logout/>
                 <Login loginOk={loginOk} setLoginOk={setLoginOk}/>
             </Route>
             <Route exact path={`/register`}>

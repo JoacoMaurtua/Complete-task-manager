@@ -5,7 +5,7 @@ import {useHistory} from 'react-router-dom';
 import {NavDropdown} from 'react-bootstrap';
 import jwt_decode from "jwt-decode";
 
-const Logout = () => {
+const LogOut = () => {
     const history = useHistory();
     let userNameActual
     const token = document.cookie.split("=")[1];
@@ -34,7 +34,7 @@ const Logout = () => {
 
     return (
         <div className="logoutContainer">
-        <NavDropdown title={`${userNameActual ? userNameActual : 'Log-in please!!!'}`}>
+        <NavDropdown title={`${userNameActual}`}>
             <NavDropdown.Item className="logoutSlice" onClick={(event) => logOut(event)}>
             <i class="fas fa-sign-out-alt"></i> Logout
             </NavDropdown.Item>
@@ -44,4 +44,4 @@ const Logout = () => {
     );
 }
 
-export default Logout;
+export default LogOut;
