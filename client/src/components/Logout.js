@@ -34,7 +34,7 @@ const LogOut = () => {
 
     return (
         <div className="logoutContainer">
-        <NavDropdown title={`${userNameActual}`}>
+        <NavDropdown title={`${userNameActual ? userNameActual : "Log-In Please!!!"}`} style={{cursor:"pointer"}}>
             <NavDropdown.Item className="logoutSlice" onClick={(event) => logOut(event)}>
             <i class="fas fa-sign-out-alt"></i> Logout
             </NavDropdown.Item>

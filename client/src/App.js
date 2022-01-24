@@ -7,6 +7,7 @@ import TaskList from './components/TaskList';
 import Detail from './components/Detail';
 import Login from './components/Login';
 import Register from './components/Register';
+import LogOut from './components/Logout';
 //import Swal from 'sweetalert2';
 
 export const MyContext = createContext();
@@ -66,18 +67,20 @@ function App() {
                 <Register users={users} setUsers={setUsers}/>
             </Route>
             <Route exact path={`/task`}>
+                <LogOut/>
                 <Form create={true} loaded={loginOk}/>
             </Route>
             <Route exact path={`/tasks`}>
-              {
-                loaded? <TaskList list={tasks} setList={setTasks}/>:''
-              }
+              <LogOut/>
+              <TaskList list={tasks} setList={setTasks}/>  
             </Route>
             <Route exact path={`/tasks/:id`}>
+              <LogOut/>
               <Detail />
             </Route>
             <Route exact path={`/tasks/:id/edit`}>
-                <Form update={true}/>
+              <LogOut/>
+              <Form update={true}/>
             </Route>
           </Switch>
         </Router>

@@ -161,7 +161,7 @@ export default function Form({create,update, loaded}) {
           }
     
           <Link to={'/tasks'} style={{textDecoration:'none'}}>
-            <p className="tasksLink">See all my tasks</p>
+            <p className="tasksLink" >See all my tasks</p>
           </Link>
           
         </form>      
